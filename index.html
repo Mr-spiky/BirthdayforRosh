@@ -3,7 +3,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HBD love</title>	    
+    <title>✨ Happy Birthday My Queen 👑💕</title>	    
     <link type="text/css" rel="stylesheet" href="./file/default.css">
     <script type="text/javascript" src="./file/jquery.min.js"></script>
     <script type="text/javascript" src="./file/jscex.min.js"></script>
@@ -19,10 +19,51 @@
             var audio = document.getElementById("myAudio");
             audio.play();
         }
+        
+        // Create floating hearts
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.className = 'heart';
+            heart.innerHTML = '💖';
+            heart.style.left = Math.random() * 100 + '%';
+            heart.style.animationDelay = Math.random() * 2 + 's';
+            heart.style.animationDuration = (Math.random() * 3 + 2) + 's';
+            document.getElementById('hearts').appendChild(heart);
+            
+            setTimeout(() => {
+                heart.remove();
+            }, 5000);
+        }
+        
+        // Create sparkling stars
+        function createStar() {
+            const star = document.createElement('div');
+            star.className = 'star';
+            star.style.width = '4px';
+            star.style.height = '4px';
+            star.style.left = Math.random() * 100 + '%';
+            star.style.top = Math.random() * 100 + '%';
+            star.style.animationDelay = Math.random() * 2 + 's';
+            document.getElementById('stars').appendChild(star);
+            
+            setTimeout(() => {
+                star.remove();
+            }, 4000);
+        }
+        
+        // Start animations
+        setInterval(createHeart, 800);
+        setInterval(createStar, 400);
     </script>
 </head>
 <body>
     <div id="main">
+        <!-- Floating Hearts -->
+        <div class="floating-hearts" id="hearts"></div>
+        
+        <!-- Sparkling Stars -->
+        <div class="stars" id="stars"></div>
+        
         <div id="error"><a href="http://www.google.cn/chrome/intl/zh-CN/landing_chrome.html?hl=zh-CN&brand=CHMI">Chrome</a> (<a href="http://firefox.com.cn/download/">Firefox</a>)</div>
         <audio autoplay="autoplay" height="100" width="100" id="myAudio">
             <source src="aud.mp3" type="audio/mp3" />
@@ -31,15 +72,13 @@
         <div id="wrap">
             <div id="text">
                 <div id="code">
-                    <span class="say">To My Sweetest Rosh 💝</span><br>
-                    <span class="say">Happy Birthday Beautiful Soul 🎂✨</span><br>
-                    <span class="say">You light up every room you enter 🌟</span><br>
-                    <span class="say">Your friendship is my greatest treasure 💎</span><br>
-                    <span class="say">May this year bring you endless joy 🌈</span><br>
-                    <span class="say">And Mahadev Blesses you🌈</span><br>
-                    <span class="say">And all your dreams come true 🌸</span><br>
-                    <span class="say">Forever grateful for your friendship 💕</span><br>
-                    <span class="say">Love you always, My Girl 🤗❤️</span><br>
+                    <span class="say">✨ To My Beautiful Queen 👑💕</span><br>
+                    <span class="say">🎂 Happy Birthday My Love 🎂</span><br>
+                    <span class="say">🌹 You're My Everything 🌹</span><br>
+                    <span class="say">💎 My Heart Beats Only For You 💎</span><br>
+                    <span class="say">🦋 You Make My World Complete 🦋</span><br>
+                    <span class="say">✨ Forever & Always Yours ✨</span><br>
+                    <span class="say">💖 I Love You More Each Day 💖</span><br>
                 </div>
             </div>
             <div id="clock-box">
@@ -76,7 +115,7 @@
         var opts = {
             seed: {
                 x: width / 2 - 20,
-                color: "rgb(190, 26, 37)",
+                color: "rgb(255, 105, 180)",
                 scale: 2
             },
             branch: [
