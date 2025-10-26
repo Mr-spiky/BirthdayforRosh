@@ -20,6 +20,23 @@
             audio.play();
         }
         
+        // Music Control Function
+        function toggleMusic() {
+            var audio = document.getElementById("myAudio");
+            var button = document.getElementById("music-toggle");
+            var text = document.getElementById("music-text");
+            
+            if (audio.paused) {
+                audio.play();
+                button.innerHTML = "🎵";
+                text.innerHTML = "Playing romantic music...";
+            } else {
+                audio.pause();
+                button.innerHTML = "🔇";
+                text.innerHTML = "Music paused";
+            }
+        }
+        
         // Create floating hearts
         function createHeart() {
             const heart = document.createElement('div');
@@ -54,22 +71,143 @@
         // Start animations
         setInterval(createHeart, 800);
         setInterval(createStar, 400);
+        
+        // AMAZING FIREWORKS EFFECT
+        function createFirework() {
+            const colors = ['#ff6b9d', '#ffd93d', '#6bcf7f', '#4facfe', '#a8edea', '#d299c2'];
+            const x = Math.random() * window.innerWidth;
+            const y = Math.random() * window.innerHeight * 0.7;
+            
+            for (let i = 0; i < 15; i++) {
+                const firework = document.createElement('div');
+                firework.className = 'firework';
+                firework.style.left = x + 'px';
+                firework.style.top = y + 'px';
+                firework.style.background = colors[Math.floor(Math.random() * colors.length)];
+                firework.style.animationDelay = (Math.random() * 0.5) + 's';
+                
+                // Random direction
+                const angle = (Math.PI * 2 * i) / 15;
+                const distance = 50 + Math.random() * 100;
+                firework.style.setProperty('--dx', Math.cos(angle) * distance + 'px');
+                firework.style.setProperty('--dy', Math.sin(angle) * distance + 'px');
+                
+                document.getElementById('fireworks').appendChild(firework);
+                
+                setTimeout(() => firework.remove(), 2000);
+            }
+        }
+        
+        // MAGICAL PARTICLES
+        function createParticles() {
+            for (let i = 0; i < 8; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.bottom = '0px';
+                particle.style.animationDelay = (Math.random() * 2) + 's';
+                document.getElementById('particles').appendChild(particle);
+                
+                setTimeout(() => particle.remove(), 3000);
+            }
+        }
+        
+        // RAINBOW CONFETTI
+        function createConfetti() {
+            const colors = ['#ff6b9d', '#ffd93d', '#6bcf7f', '#4facfe', '#a8edea', '#d299c2', '#f093fb'];
+            for (let i = 0; i < 12; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.left = Math.random() * 100 + '%';
+                confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.animationDelay = (Math.random() * 3) + 's';
+                document.getElementById('confetti').appendChild(confetti);
+                
+                setTimeout(() => confetti.remove(), 4000);
+            }
+        }
+        
+        // MAGIC SPARKLES
+        function createSparkles() {
+            for (let i = 0; i < 20; i++) {
+                const sparkle = document.createElement('div');
+                sparkle.className = 'sparkle';
+                sparkle.style.left = Math.random() * 100 + '%';
+                sparkle.style.top = Math.random() * 100 + '%';
+                sparkle.style.animationDelay = (Math.random() * 1.5) + 's';
+                document.getElementById('sparkles').appendChild(sparkle);
+                
+                setTimeout(() => sparkle.remove(), 1500);
+            }
+        }
+        
+        // Start all magical effects
+        setInterval(createFirework, 3000);
+        setInterval(createParticles, 1500);
+        setInterval(createConfetti, 2000);
+        setInterval(createSparkles, 800);
+        
+        // CLICK EFFECT - Burst of magic on click
+        document.addEventListener('click', function(e) {
+            createFirework();
+            createParticles();
+            
+            // Create burst at click location
+            const burst = document.createElement('div');
+            burst.style.position = 'fixed';
+            burst.style.left = e.clientX + 'px';
+            burst.style.top = e.clientY + 'px';
+            burst.style.width = '20px';
+            burst.style.height = '20px';
+            burst.style.background = 'radial-gradient(circle, #ff6b9d, transparent)';
+            burst.style.borderRadius = '50%';
+            burst.style.animation = 'firework-explosion 1s ease-out forwards';
+            burst.style.pointerEvents = 'none';
+            burst.style.zIndex = '1001';
+            document.body.appendChild(burst);
+            
+            setTimeout(() => burst.remove(), 1000);
+        });
     </script>
 </head>
 <body>
     <div id="main">
+        <!-- Fireworks Container -->
+        <div id="fireworks" class="fireworks-container"></div>
+        
+        <!-- Particle Explosion Container -->
+        <div id="particles" class="particles-container"></div>
+        
+        <!-- Rainbow Confetti -->
+        <div id="confetti" class="confetti-container"></div>
+        
         <!-- Floating Hearts -->
         <div class="floating-hearts" id="hearts"></div>
         
         <!-- Sparkling Stars -->
         <div class="stars" id="stars"></div>
         
+        <!-- Magic Sparkles -->
+        <div id="sparkles" class="sparkles-container"></div>
+        
         <div id="error"><a href="http://www.google.cn/chrome/intl/zh-CN/landing_chrome.html?hl=zh-CN&brand=CHMI">Chrome</a> (<a href="http://firefox.com.cn/download/">Firefox</a>)</div>
-        <audio autoplay="autoplay" height="100" width="100" id="myAudio">
+        <audio autoplay="autoplay" height="100" width="100" id="myAudio" loop>
             <source src="aud.mp3" type="audio/mp3" />
             <embed height="100" width="100" src="aud.mp3" />
         </audio>
+        
+        <!-- Beautiful Music Control -->
+        <div id="music-control">
+            <button id="music-toggle" onclick="toggleMusic()">🎵</button>
+            <span id="music-text">Playing romantic music...</span>
+        </div>
         <div id="wrap">
+            <!-- Special Entrance Title -->
+            <div id="entrance-title">
+                <h1 class="magical-title">🎂✨ HAPPY BIRTHDAY ✨🎂</h1>
+                <h2 class="queen-title">👑 MY BEAUTIFUL QUEEN 👑</h2>
+            </div>
+            
             <div id="text">
                 <div id="code">
                     <span class="say">✨ To My Beautiful Queen 👑💕</span><br>
