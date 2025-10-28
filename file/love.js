@@ -199,8 +199,8 @@
             var len = this.length / 2;
 
             ctx.save();
-            ctx.strokeStyle = '#FFF';
-            ctx.lineWidth = this.height;
+            ctx.strokeStyle = '#654321'; // Brown color for ground/root area
+            ctx.lineWidth = this.height * 3; // Make it thicker
             ctx.lineCap = 'round';
             ctx.lineJoin = 'round';
             ctx.translate(point.x, point.y);
@@ -457,14 +457,17 @@
             var ctx = s.tree.ctx;
             ctx.save();
         	ctx.beginPath();
-        	ctx.fillStyle = '#FFC0CB';
-            // ctx.shadowColor = 'rgb(35, 31, 32)';
-            ctx.shadowBlur = 2;
+        	ctx.fillStyle = '#654321'; // Even darker brown for better visibility
+            ctx.strokeStyle = '#4a3728'; // Dark brown stroke
+            ctx.lineWidth = 2;
+            ctx.shadowColor = 'rgba(0, 0, 0, 0.5)';
+            ctx.shadowBlur = 4;
         	ctx.moveTo(p.x, p.y);
         	ctx.arc(p.x, p.y, s.radius, 0, 2 * Math.PI);
         	ctx.closePath();
         	ctx.fill();
-        	// ctx.restore();
+        	ctx.stroke(); // Add stroke for more visibility
+        	ctx.restore();
         }
     }
 

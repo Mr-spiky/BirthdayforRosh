@@ -197,55 +197,58 @@ a {
     width: 100%;
     height: auto;
     min-height: 100vh;
-    margin-top: 80px;
+    margin-top: 60px; /* Reduced to give more space for tree */
   }
   
   #canvas {
     width: 100%;
-    height: 300px;
+    height: 75vh; /* Increased height for better tree visibility */
     max-width: 100%;
+    min-height: 500px; /* Minimum height to ensure tree is visible */
   }
   
   #text {
     width: 90%;
     height: auto;
     left: 50%;
-    top: 40px;
+    top: 20px; /* Moved higher to avoid overlap */
     transform: translateX(-50%);
-    position: relative;
+    position: absolute; /* Changed to absolute to overlay canvas */
     text-align: center;
-    margin: 20px auto;
+    margin: 0 auto;
+    z-index: 200; /* High z-index to stay above tree */
   }
   
   #code {
-    font-size: 18px;
-    line-height: 30px;
-    margin-top: 20px;
-    padding: 25px 15px;
+    font-size: 16px; /* Slightly smaller to fit better */
+    line-height: 28px;
+    margin-top: 10px;
+    padding: 20px 15px;
     max-width: 100%;
     word-wrap: break-word;
     border-radius: 15px;
   }
   
   .say {
-    font-size: 18px;
-    margin: 8px 0;
+    font-size: 16px; /* Adjusted for better fit */
+    margin: 6px 0;
     display: block;
   }
   
   #clock-box {
-    position: relative;
-    left: 0;
-    top: 30px;
-    font-size: 16px;
+    position: absolute; /* Changed to absolute */
+    left: 50%;
+    bottom: 20px; /* Positioned at bottom */
+    transform: translateX(-50%);
+    font-size: 14px;
     text-align: center;
-    width: 100%;
-    margin: 20px 0;
+    width: 90%;
+    z-index: 200;
   }
   
   #clock {
     margin-left: 0;
-    font-size: 14px;
+    font-size: 12px;
   }
   
   /* Mobile Music Control */
@@ -275,48 +278,61 @@ a {
     padding: 3px;
   }
 }
-}
 
 @media screen and (max-width: 480px) {
   body {
     font-size: 14px;
   }
   
-  #text {
-    width: 95%;
-    margin: 15px auto;
-  }
-  
-  #code {
-    font-size: 16px;
-    line-height: 26px;
-    padding: 20px 12px;
-    margin-top: 15px;
-  }
-  
-  .say {
-    font-size: 16px;
-    margin: 6px 0;
-  }
-  
-  #clock-box {
-    font-size: 14px;
-  }
-  
-  #clock {
-    font-size: 12px;
+  #wrap {
+    margin-top: 40px; /* Less margin for more space */
   }
   
   #canvas {
-    height: 250px;
+    height: 80vh; /* Much taller for small screens */
+    min-height: 600px; /* Higher minimum for tree visibility */
+  }
+  
+  #text {
+    width: 95%;
+    top: 10px; /* Moved higher */
+    margin: 10px auto;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  #code {
+    font-size: 14px; /* Smaller for small screens */
+    line-height: 24px;
+    padding: 15px 10px;
+    margin-top: 5px;
+  }
+  
+  .say {
+    font-size: 14px;
+    margin: 4px 0;
+  }
+  
+  #clock-box {
+    position: absolute;
+    bottom: 10px; /* Closer to bottom */
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 12px;
+    width: 90%;
+  }
+  
+  #clock {
+    font-size: 10px;
   }
   
   .magical-title {
-    font-size: 20px;
+    font-size: 18px; /* Smaller for small screens */
   }
   
   .queen-title {
-    font-size: 16px;
+    font-size: 14px; /* Smaller for small screens */
   }
   
   /* Reduce decorations on small screens */
