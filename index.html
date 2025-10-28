@@ -257,6 +257,16 @@
             <div id="clock-box">
                 <span id="clock">577 days 0 hours 0 minutes 0 seconds</span> <!-- Change to "6940 days..." if needed -->
             </div>
+            
+            <!-- Mobile-Friendly Click Overlay -->
+            <div id="click-overlay">
+                <div class="click-instruction">
+                    <div class="pulsing-heart">💖</div>
+                    <h3>Tap Here to Start Magic!</h3>
+                    <p>👆 Touch anywhere to begin the romantic surprise</p>
+                </div>
+            </div>
+            
             <canvas id="canvas"></canvas>
         </div>
     </div>
@@ -326,16 +336,30 @@
         var foot = tree.footer;
         var hold = 1;
 
-        canvas.click(function(e) {
+        // Mobile-friendly click handler
+        function startAnimation() {
             playAudio();
+            hold = 0;
+            document.getElementById('click-overlay').classList.add('hidden');
+            canvas.unbind("click");
+            canvas.unbind("mousemove");
+            canvas.removeClass('hand');
+        }
+
+        // Add click/touch event to overlay for mobile
+        document.getElementById('click-overlay').addEventListener('click', startAnimation);
+        document.getElementById('click-overlay').addEventListener('touchstart', function(e) {
+            e.preventDefault();
+            startAnimation();
+        });
+
+        // Original canvas click for desktop
+        canvas.click(function(e) {
             var offset = canvas.offset(), x, y;
             x = e.pageX - offset.left;
             y = e.pageY - offset.top;
             if (seed.hover(x, y)) {
-                hold = 0; 
-                canvas.unbind("click");
-                canvas.unbind("mousemove");
-                canvas.removeClass('hand');
+                startAnimation();
             }
         }).mousemove(function(e) {
             var offset = canvas.offset(), x, y;
