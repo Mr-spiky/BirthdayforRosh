@@ -40,26 +40,25 @@ a {
 }
 #code {
   display: none;
-  color: #FFD700;
+  color: #FFFFFF;
   font-size: 16px;
   margin-top: 30px;
   line-height: 32px;
   font-weight: bolder;
   text-align: center;
   text-shadow: 
-    0 0 5px #FFD700,
-    0 0 10px #FFD700,
-    0 0 15px #FFD700,
-    0 0 20px #FFD700,
-    2px 2px 4px rgba(0,0,0,0.8);
-  background: rgba(255,255,255,0.15);
+    0 0 8px #000000,
+    0 0 12px #000000,
+    2px 2px 6px rgba(0,0,0,0.9);
+  background: rgba(0,0,0,0.7);
   backdrop-filter: blur(15px);
   border-radius: 20px;
   padding: 25px 20px;
-  border: 2px solid rgba(255,215,0,0.4);
+  border: 3px solid rgba(255,255,255,0.8);
   box-shadow: 
-    0 8px 32px rgba(31,38,135,0.37),
-    inset 0 2px 10px rgba(255,255,255,0.2);
+    0 8px 32px rgba(0,0,0,0.6),
+    inset 0 2px 10px rgba(255,255,255,0.3),
+    0 0 20px rgba(255,255,255,0.5);
   animation: glow 2s ease-in-out infinite alternate;
   max-width: 100%;
   box-sizing: border-box;
@@ -71,13 +70,24 @@ a {
 #code:hover {
   transform: perspective(1000px) rotateX(0deg) scale(1.05);
   box-shadow: 
-    0 15px 40px rgba(31,38,135,0.5),
-    inset 0 2px 10px rgba(255,255,255,0.3);
+    0 15px 40px rgba(0,0,0,0.8),
+    inset 0 2px 10px rgba(255,255,255,0.4),
+    0 0 30px rgba(255,255,255,0.7);
 }
 
 @keyframes glow {
-  from { box-shadow: 0 8px 32px rgba(255,215,0,0.3); }
-  to { box-shadow: 0 8px 32px rgba(255,215,0,0.6); }
+  from { 
+    box-shadow: 
+      0 8px 32px rgba(0,0,0,0.6),
+      inset 0 2px 10px rgba(255,255,255,0.3),
+      0 0 20px rgba(255,255,255,0.5);
+  }
+  to { 
+    box-shadow: 
+      0 8px 32px rgba(0,0,0,0.8),
+      inset 0 2px 10px rgba(255,255,255,0.4),
+      0 0 30px rgba(255,255,255,0.8);
+  }
 }
 
 .say {
@@ -88,18 +98,19 @@ a {
   word-wrap: break-word;
   white-space: normal;
   text-shadow: 
-    0 0 5px currentColor,
-    0 0 10px currentColor,
-    2px 2px 4px rgba(0,0,0,0.7);
+    0 0 8px #000000,
+    0 0 12px #000000,
+    2px 2px 6px rgba(0,0,0,0.9);
   transition: all 0.3s ease;
+  font-weight: bold;
 }
 
 .say:hover {
-  transform: scale(1.1) rotateZ(5deg);
+  transform: scale(1.1) rotateZ(2deg);
   text-shadow: 
-    0 0 15px currentColor,
-    0 0 25px currentColor,
-    2px 2px 8px rgba(0,0,0,0.9);
+    0 0 15px #000000,
+    0 0 20px #000000,
+    2px 2px 8px rgba(0,0,0,1);
 }
 
 @keyframes rainbow-text {
@@ -178,74 +189,149 @@ a {
 
 /* Mobile Responsive Styles */
 @media screen and (max-width: 768px) {
+  body {
+    font-size: 16px;
+  }
+  
   #wrap {
-    width: 95%;
+    width: 100%;
     height: auto;
-    min-height: 400px;
+    min-height: 100vh;
+    margin-top: 80px;
   }
   
   #canvas {
     width: 100%;
-    height: auto;
+    height: 300px;
     max-width: 100%;
-    max-height: 400px;
   }
   
   #text {
-    width: 95%;
+    width: 90%;
     height: auto;
     left: 50%;
-    top: 20px;
+    top: 40px;
     transform: translateX(-50%);
     position: relative;
     text-align: center;
-    margin: 0 auto;
+    margin: 20px auto;
   }
   
   #code {
-    font-size: 14px;
-    line-height: 24px;
-    margin-top: 15px;
-    padding: 15px 10px;
+    font-size: 18px;
+    line-height: 30px;
+    margin-top: 20px;
+    padding: 25px 15px;
     max-width: 100%;
     word-wrap: break-word;
+    border-radius: 15px;
+  }
+  
+  .say {
+    font-size: 18px;
+    margin: 8px 0;
+    display: block;
   }
   
   #clock-box {
     position: relative;
     left: 0;
-    top: 20px;
-    font-size: 18px;
+    top: 30px;
+    font-size: 16px;
     text-align: center;
     width: 100%;
+    margin: 20px 0;
   }
   
   #clock {
     margin-left: 0;
+    font-size: 14px;
   }
   
-  body {
+  /* Mobile Music Control */
+  #music-control {
+    bottom: 10px;
+    right: 10px;
+    padding: 8px 15px;
     font-size: 12px;
   }
+  
+  #music-toggle {
+    font-size: 20px;
+  }
+  
+  /* Mobile Entrance Title */
+  #entrance-title {
+    top: 80px;
+  }
+  
+  .magical-title {
+    font-size: 24px;
+    padding: 5px;
+  }
+  
+  .queen-title {
+    font-size: 18px;
+    padding: 3px;
+  }
+}
 }
 
 @media screen and (max-width: 480px) {
-  #code {
-    font-size: 12px;
-    line-height: 20px;
-    padding: 12px 8px;
-  }
-  
-  #clock-box {
-    font-size: 16px;
-  }
-  
-  #canvas {
-    max-height: 300px;
+  body {
+    font-size: 14px;
   }
   
   #text {
-    width: 98%;
+    width: 95%;
+    margin: 15px auto;
+  }
+  
+  #code {
+    font-size: 16px;
+    line-height: 26px;
+    padding: 20px 12px;
+    margin-top: 15px;
+  }
+  
+  .say {
+    font-size: 16px;
+    margin: 6px 0;
+  }
+  
+  #clock-box {
+    font-size: 14px;
+  }
+  
+  #clock {
+    font-size: 12px;
+  }
+  
+  #canvas {
+    height: 250px;
+  }
+  
+  .magical-title {
+    font-size: 20px;
+  }
+  
+  .queen-title {
+    font-size: 16px;
+  }
+  
+  /* Reduce decorations on small screens */
+  .streamer {
+    display: none;
+  }
+  
+  .party-element {
+    width: 8px;
+    height: 8px;
+  }
+  
+  .confetti-piece {
+    width: 6px;
+    height: 6px;
   }
 }
 
@@ -307,86 +393,150 @@ a {
   }
 }
 
-/* BEAUTIFUL BIRTHDAY RIBBON BANNER */
-#birthday-ribbon {
+/* CURVY STREAMERS PARTY DECORATION */
+#party-decoration {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  z-index: 500;
+  height: 100%;
   pointer-events: none;
+  z-index: 500;
+  overflow: hidden;
 }
 
-.ribbon-banner {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 120%;
-  margin-left: -10%;
-  transform: rotate(-3deg);
-  margin-top: 20px;
-  animation: ribbon-sway 4s ease-in-out infinite;
-}
-
-.ribbon-second {
-  transform: rotate(2deg);
-  margin-top: -15px;
-  animation: ribbon-sway-reverse 4s ease-in-out infinite;
-}
-
-.flag {
-  width: 40px;
-  height: 60px;
-  position: relative;
-  margin: 0 -2px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-  animation: flag-wave 3s ease-in-out infinite;
-}
-
-.flag:nth-child(even) {
-  animation-delay: 0.2s;
-}
-
-.flag:nth-child(3n) {
-  animation-delay: 0.4s;
-}
-
-.flag::after {
-  content: '';
+.streamer {
   position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 0;
-  height: 0;
-  border-left: 20px solid transparent;
-  border-right: 20px solid transparent;
-  border-top: 15px solid inherit;
+  width: 20px;
+  height: 200px;
+  border-radius: 10px;
+  animation: streamer-sway 4s ease-in-out infinite;
 }
 
-/* Flag Colors */
-.flag.red { background: linear-gradient(135deg, #ff6b6b, #ee5a52); }
-.flag.orange { background: linear-gradient(135deg, #ff9500, #ff7675); }
-.flag.yellow { background: linear-gradient(135deg, #ffd93d, #fdcb6e); }
-.flag.green { background: linear-gradient(135deg, #6bcf7f, #00b894); }
-.flag.blue { background: linear-gradient(135deg, #4facfe, #00cec9); }
-.flag.purple { background: linear-gradient(135deg, #a8edea, #6c5ce7); }
-.flag.pink { background: linear-gradient(135deg, #ff6b9d, #e84393); }
-.flag.teal { background: linear-gradient(135deg, #00cec9, #81ecec); }
-
-@keyframes ribbon-sway {
-  0%, 100% { transform: rotate(-3deg) translateY(0); }
-  50% { transform: rotate(-2deg) translateY(5px); }
+.streamer-1 {
+  background: linear-gradient(180deg, #ff6b6b, #ff8e8e);
+  left: 5%;
+  top: -50px;
+  transform: rotate(15deg);
+  clip-path: polygon(0% 0%, 100% 0%, 85% 50%, 100% 100%, 0% 100%, 15% 50%);
+  animation-delay: 0s;
 }
 
-@keyframes ribbon-sway-reverse {
-  0%, 100% { transform: rotate(2deg) translateY(0); }
-  50% { transform: rotate(3deg) translateY(-3px); }
+.streamer-2 {
+  background: linear-gradient(180deg, #ffd93d, #ffe066);
+  left: 20%;
+  top: -30px;
+  transform: rotate(-10deg);
+  clip-path: polygon(0% 0%, 100% 0%, 85% 50%, 100% 100%, 0% 100%, 15% 50%);
+  animation-delay: 0.5s;
 }
 
-@keyframes flag-wave {
-  0%, 100% { transform: rotateX(0deg); }
-  50% { transform: rotateX(10deg); }
+.streamer-3 {
+  background: linear-gradient(180deg, #4facfe, #7bc8ff);
+  left: 40%;
+  top: -40px;
+  transform: rotate(20deg);
+  clip-path: polygon(0% 0%, 100% 0%, 85% 50%, 100% 100%, 0% 100%, 15% 50%);
+  animation-delay: 1s;
+}
+
+.streamer-4 {
+  background: linear-gradient(180deg, #6bcf7f, #8ddc99);
+  left: 60%;
+  top: -35px;
+  transform: rotate(-15deg);
+  clip-path: polygon(0% 0%, 100% 0%, 85% 50%, 100% 100%, 0% 100%, 15% 50%);
+  animation-delay: 1.5s;
+}
+
+.streamer-5 {
+  background: linear-gradient(180deg, #ff6b9d, #ff88b5);
+  left: 80%;
+  top: -45px;
+  transform: rotate(12deg);
+  clip-path: polygon(0% 0%, 100% 0%, 85% 50%, 100% 100%, 0% 100%, 15% 50%);
+  animation-delay: 2s;
+}
+
+.streamer-6 {
+  background: linear-gradient(180deg, #a8edea, #c2f2f0);
+  left: 95%;
+  top: -25px;
+  transform: rotate(-18deg);
+  clip-path: polygon(0% 0%, 100% 0%, 85% 50%, 100% 100%, 0% 100%, 15% 50%);
+  animation-delay: 2.5s;
+}
+
+@keyframes streamer-sway {
+  0%, 100% { 
+    transform: translateX(0) translateY(0) rotate(var(--rotation, 0deg)); 
+  }
+  33% { 
+    transform: translateX(10px) translateY(15px) rotate(calc(var(--rotation, 0deg) + 5deg)); 
+  }
+  66% { 
+    transform: translateX(-8px) translateY(25px) rotate(calc(var(--rotation, 0deg) - 3deg)); 
+  }
+}
+
+/* PARTY ELEMENTS (Stars, Circles, Triangles, Squares) */
+.party-element {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  animation: party-float 3s ease-in-out infinite;
+}
+
+.party-element:nth-child(odd) {
+  animation-delay: 0.5s;
+}
+
+.party-element:nth-child(even) {
+  animation-delay: 1s;
+}
+
+.star-shape {
+  clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+  background: currentColor;
+}
+
+.circle-shape {
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.triangle-shape {
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  background: currentColor;
+}
+
+.square-shape {
+  background: currentColor;
+  transform: rotate(45deg);
+}
+
+@keyframes party-float {
+  0%, 100% { 
+    transform: translateY(0) rotate(0deg) scale(1); 
+    opacity: 0.8;
+  }
+  50% { 
+    transform: translateY(-15px) rotate(180deg) scale(1.2); 
+    opacity: 1;
+  }
+}
+
+/* Mobile Responsive for Party Decoration */
+@media screen and (max-width: 768px) {
+  .streamer {
+    width: 15px;
+    height: 150px;
+  }
+  
+  .party-element {
+    width: 8px;
+    height: 8px;
+  }
 }
 
 /* STATIC CONFETTI DECORATION */
